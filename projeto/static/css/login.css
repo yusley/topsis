@@ -1,0 +1,31 @@
+body{
+    display: block;
+    box-sizing: border-box;
+    height: 100vh;
+    
+}
+
+.container-fluid{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(to bottom, #019cde, #DB0080);
+}
+
+.loginDiv{
+    background-color: #019CDE;
+    width: 100%;
+    max-width: 500px;
+    padding: 5%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+    color: white;
+}
+
+.loginDiv .img{
+    max-width: 150px;
+}
+
+.img img{
+    width: 100%;
+}
