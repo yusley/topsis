@@ -1,5 +1,35 @@
 {% extends 'partials/base.html' %}
 {% block content%}
-<h1>Bem vindo ao TOPSIS, {{ request.user }}!</h1>
+<div class="title">
+    <h1>Bem vindo ao TOPSIS, {{ request.user }}!</h1>
+</div>
+<div class="cards">
+    <div class="card inicio">
+        <div class="title-card">
+            <p>Materiais Cadastrados</p>
+        </div>
+        <div class="value-card">
+            <p>120</p>
+        </div>
+    </div>
+    
+    <div class="card meio">
+        <div class="title-card">
+            <p>Clientes Cadastrados</p>
+        </div>
+        <div class="value-card">
+            <p>1000</p>
+        </div>
+    </div>
+    <div class="card fim">
+        <div class="title-card">
+            <p>Materiais Cadastrados</p>
+        </div>
+        <div class="value-card">
+            <p>50</p>
+        </div>
+    </div>
+</div>
+
 <!-- <a href="/logout"><button type="button">Logout</button></a> -->
 {% endblock %}

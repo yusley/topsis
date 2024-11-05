@@ -1,0 +1,39 @@
+.title{
+    color: #fff;
+    padding-top: 2%;
+}
+
+.cards{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5%;
+}
+
+.card{
+    background-color:#333333 ;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 0 5%;
+    align-items: center;
+    width: 400px;
+    
+}
+
+.inicio{
+    box-shadow: 1px 5px #1b66ac;
+}
+.meio{
+    box-shadow: 1px 5px #d1ce14;
+}
+.fim{
+    box-shadow: 1px 5px #b611a0;
+}
+
+.card .title-card{
+    font-size: 1.5rem;
+}
+
+.card .value-card{
+    font-size: 5rem;
+}
