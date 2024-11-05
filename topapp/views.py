@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
-# Create your views here.
+#Create your views here.
 
 @login_required(login_url='/login')
 def home(request):
@@ -20,7 +20,6 @@ def login_view(request):
         return render(request, 'partials/login.html')
     
     else:
-        print('POST')
 
         username = request.POST.get('user')
         password = request.POST.get('password')
@@ -63,7 +62,11 @@ def createUser(request):
             return HttpResponse('Usuário ja existe!')
         else:
             
-            user = User.objects.create_user(username=username, password=password, email=email, first_name=first_name, last_name=second_name)
+            user = User.objects.create_user(username=username,
+                                            password=password,
+                                            email=email, 
+                                            first_name=first_name, 
+                                            last_name=second_name)
 
             user.save()
 

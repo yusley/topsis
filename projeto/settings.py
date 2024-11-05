@@ -27,7 +27,8 @@ SECRET_KEY = 'django-insecure-m-e8q*6))9ai5yo4vrtye50izp+vz4mk8yrmw82t#z&&g=@bt_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
+
 
 
 # Application definition
@@ -42,6 +43,11 @@ INSTALLED_APPS = [
     'topapp',
     
 ]
+
+
+AUTH_USER_MODEL = "topapp.CustomUser"
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

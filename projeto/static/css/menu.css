@@ -1,0 +1,42 @@
+.menubar{
+    display: flex;
+    flex-direction: column;
+    background-color: #333333;
+    align-items: center;
+    height: 100vh;
+    width: 300px;
+    
+}
+
+.logo{
+    margin-top: 20%;
+}
+
+.logo img{
+    width: 150px;
+}
+
+.listMenu{
+    display: flex;
+    justify-content: center;
+    margin-top: 20%;
+    color: #fff;
+ 
+}
+
+.listMenu ul{
+    list-style:none;
+    padding: 0;
+    text-align: center;
+}
+
+.listMenu li{
+    padding: 0;
+    margin: 50% 0;
+}
+
+.listMenu ul li a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+}
