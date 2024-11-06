@@ -6,9 +6,6 @@ from django.contrib.auth.models import User
 
 #Create your views here.
 
-@login_required(login_url='/login')
-def home(request):
-    return render(request, 'home.html')
 
 
 def login_view(request):
@@ -71,3 +68,14 @@ def createUser(request):
             user.save()
 
             return redirect('/login')
+
+
+
+@login_required(login_url='/login')
+def home(request):
+    return render(request, 'home.html')
+
+
+@login_required(login_url='/login')
+def materiais(request):
+    return render(request, 'materiais.html')

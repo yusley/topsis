@@ -1,18 +1,20 @@
 {% load static %}
 
 <div class="menubar">
-    <div class="logo">
-        <img src="{% static 'img/logo.svg'%}" alt="">
+    <div class="menuMobile">
+        <div class="logo">
+            <img src="{% static 'img/top.png'%}" alt="">
+        </div>
+        <button class="hamburger" onclick="toggleMenu()">☰</button>
     </div>
     
     <div class="listMenu">
         <ul>
             <li><a href="/">HOME</a></li>
             <li><a href="/">SERVIÇOS</a></li>
-            <li><a href="/">MATERIAIS</a></li>
+            <li><a href="/materiais">MATERIAIS</a></li>
             <li><a href="/">CLIENTES</a></li>
             <li><a href="/logout">SAIR</a></li>
         </ul>
     </div>
-
 </div>

@@ -32,7 +32,6 @@ class Fornecedor(models.Model):
 class Produto(models.Model):
     nome = models.CharField(max_length=255, null=False)
     medida = models.CharField(max_length=255, null=False, )
-    fk_filial = models.ForeignKey(Filial, on_delete=models.CASCADE)
     fk_fornecedor = models.ForeignKey(Fornecedor, on_delete=models.CASCADE)
 
 
@@ -73,6 +72,15 @@ class Estoque(models.Model):
     fk_produto = models.ForeignKey(Produto,on_delete=models.CASCADE, blank=False)
     fk_filial = models.ForeignKey(Filial,on_delete=models.CASCADE, blank=False)
 
+
+class Estoque(models.Model):
+    quantidade = models.CharField(max_length=255, null=False, blank=False)
+    tipomovimentacao = models.CharField(max_length=255, null=False, blank=False)
+    fk_produto = models.ForeignKey(Produto,on_delete=models.CASCADE, blank=False)
+    fk_filial = models.ForeignKey(Filial,on_delete=models.CASCADE, blank=False)
+    fk_usuario = models.ForeignKey(CustomUser,on_delete=models.CASCADE, blank=False)
+
+    
 
 # class Perfil(models.Model):
 #     user = models.ForeignKey(User, on_delete=models.CASCADE)
