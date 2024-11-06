@@ -1,0 +1,34 @@
+.content-body{
+    background-color: #333333;
+    padding: 2%;
+    margin: 2% 0;
+}
+
+.materiais{
+    width: 100%;
+    overflow: auto;
+}
+
+.btn-novo-material{
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 5% 0;
+   
+}
+
+.btn-novo-material input{
+    background-color:#D70790 ;
+    border: none;
+    padding: 1% 2%;
+    border-radius: 5px ;
+    color: #fff;
+}
+
+.btn-editar input{
+    background-color:#00B1FD ;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    padding: 10%;
+}

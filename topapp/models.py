@@ -84,7 +84,7 @@ class Estoque(models.Model):
 
 # class Perfil(models.Model):
 #     user = models.ForeignKey(User, on_delete=models.CASCADE)
-#     Filial = models.ForeignKey(Filial, on_delete=models.CASCADE)
+#     Filial = models.ForeignKey(Filial, on_delete=models.CASCADE)s
 
 #     def __str__(self) -> str:
 #         return self.usuario.username

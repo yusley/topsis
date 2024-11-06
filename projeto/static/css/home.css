@@ -51,26 +51,29 @@
 
 /* TABLE */
 
-.listagemServicos{
+.listagem{
     width: 100%;
-    height: 35%;
     overflow: auto;
 }
 
-.listagemServicos::-webkit-scrollbar{
+.servicos{
+    height: 35%;
+}
+
+.listagem::-webkit-scrollbar{
     width: 2px;
 }
 
-.listagemServicos::-webkit-scrollbar-track{
+.listagem::-webkit-scrollbar-track{
     background: rgb(154, 154, 154);
 }
 
-.listagemServicos::-webkit-scrollbar-thumb {
+.listagem::-webkit-scrollbar-thumb {
     background-color: rgb(65, 65, 65); 
     border-radius: 20px;      
   }
 
-.listagemServicos table{
+.listagem table{
     color: #fff;
     font-family: arial, sans-serif;
     border-collapse: collapse;
@@ -78,19 +81,19 @@
     
 }
 
-.listagemServicos table td {
+.listagem table td {
     border-top: 1px solid #9c9c9c;
     border-bottom: 1px solid #9c9c9c;
     text-align: left;
     padding: 10px 0;
 }
 
-.listagemServicos table th {
+.listagem table th {
     border-top: 1px solid #9c9c9c;
     border-bottom: 1px solid #9c9c9c;
     text-align: left;
     padding: 10px 0;
-    font-size: 25px;
+    font-size: 20px;
 }
 
 

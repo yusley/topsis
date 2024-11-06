@@ -79,3 +79,8 @@ def home(request):
 @login_required(login_url='/login')
 def materiais(request):
     return render(request, 'materiais.html')
+
+
+@login_required(login_url='/login')
+def cadastroMateriais(request,id=None):
+    return render(request, 'cadastromateriais.html')
