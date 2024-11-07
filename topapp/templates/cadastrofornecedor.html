@@ -1,14 +1,14 @@
 {% extends 'partials/base.html' %}
 {% block content%}
 <div class="title">
-    <h1>Materiais</h1>
+    <h1>Fornecedor</h1>
 </div>
 
 <div class="content-body">
     
     <div class="title">
         <h3>
-            Cadastro Material
+            Cadastro Fornecedor
         </h3>
     </div>
 
@@ -17,24 +17,29 @@
         <input type="text">
     </div>
     <div class="bigInput">
-        <label for="">Fornecedor</label>
+        <label for="">Rua</label>
         <input type="text">
     </div>
 
     <div class="listSmallInput">
         <div class="smallInput">
-            <label for="">Unidade de Medida</label>
+            <label for="">Número</label>
             <input type="text">
         </div>
         <div class="smallInput">
-            <label for="">Medida</label>
+            <label for="">Bairro</label>
+            <input type="text">
+        </div>
+
+        <div class="smallInput">
+            <label for="">Cidade</label>
             <input type="text">
         </div>
     </div>
 
     <div class="btns-screen">
         <div class="btn-crud">
-            <input type="submit" value="CANCELAR" onclick="window.location.href='/materiais'">
+            <input type="submit" value="CANCELAR" onclick="window.location.href='/fornecedores'">
         </div>
         <div class="btn-crud">
             <input type="submit" value="SALVAR">

@@ -1,7 +1,9 @@
 .content-body{
     background-color: #333333;
-    padding: 2%;
+    padding: 1% 5%;
     margin: 2% 0;
+    max-height: 85vh;
+    overflow: auto;
 }
 
 .materiais{
@@ -9,20 +11,49 @@
     overflow: auto;
 }
 
-.btn-novo-material{
+.headers{
+    display: flex;
+    padding: 5% 0;
+}
+
+.filters{
+    display: flex;
+}
+
+.filters input{
+    background-color: #212121;
+    border: none;
+    color: #fff;
+    padding: 2%;
+    border-top-left-radius: 5px ;
+    border-bottom-left-radius: 5px;
+}
+
+
+.filters button{
+    display: flex;
+    background-color: #D70790;
+    border: none;
+    width: 60px;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-novo{
     width: 100%;
     display: flex;
-    flex-direction: row-reverse;
-    padding: 5% 0;
+    flex-direction: row;
+   
    
 }
 
-.btn-novo-material input{
+.btn-novo input{
     background-color:#D70790 ;
     border: none;
     padding: 1% 2%;
     border-radius: 5px ;
     color: #fff;
+
 }
 
 .btn-editar input{
@@ -30,5 +61,69 @@
     border: none;
     border-radius: 5px;
     color: #fff;
-    padding: 10%;
+    padding: 5%;
+    
+    height: 50px;
+}
+
+
+
+.bigInput{
+    width: 100%;
+    margin-top: 2%;
+}
+
+.bigInput label{
+    color: #fff;
+    font-size: 18px;
+}
+
+
+.bigInput input{
+    width: 100%;
+    background-color: #212121;
+    border: none;
+    padding: 1%;
+    color: #fff;
+}
+
+.listSmallInput{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 5%;
+}
+
+.smallInput{
+    display: flex;
+    flex-direction: column;
+    margin-right: 5%;
+}
+
+.smallInput label{
+    color: #fff;
+}
+
+.smallInput input{
+    max-width: 200px;
+    background-color: #212121;
+    border: none;
+    padding: 5%;
+    color: #fff;
+}
+
+
+.btns-screen{
+    display: flex;
+    margin-top: 10%;
+    justify-content: space-between;
+}
+
+.btns-screen input{
+    width: 150px;
+    padding: 5%;
+    border-radius: 5px;
+    border: none;
+    background-color: #D70790;
+    color: #fff;
+    
 }

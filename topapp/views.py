@@ -84,3 +84,22 @@ def materiais(request):
 @login_required(login_url='/login')
 def cadastroMateriais(request,id=None):
     return render(request, 'cadastromateriais.html')
+
+
+@login_required(login_url='/login')
+def fornecedores(request):
+    return render(request, 'fornecedores.html')
+
+
+@login_required(login_url='/login')
+def cadastroFornecedor(request,id=None):
+    return render(request, 'cadastrofornecedor.html')
+
+@login_required(login_url='/login')
+def clientes(request):
+    return render(request, 'clientes.html')
+
+
+@login_required(login_url='/login')
+def cadastroClientes(request,id=None):
+    return render(request, 'cadastrocliente.html')

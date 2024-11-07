@@ -14,62 +14,12 @@
      
 }
 
-.bigInput{
-    width: 100%;
-    margin-top: 5%;
+input:focus{
+    outline: none;
+    border-radius: 5px ;
 }
 
-.bigInput label{
-    color: #fff;
-    font-size: 18px;
-}
-
-
-.bigInput input{
-    width: 100%;
-    background-color: #212121;
-    border: none;
-    padding: 1%;
-    color: #fff;
-}
-
-.listSmallInput{
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 5%;
-}
-
-.smallInput{
-    display: flex;
-    flex-direction: column;
-    margin-right: 5%;
-}
-
-.smallInput label{
-    color: #fff;
-}
-
-.smallInput input{
-    max-width: 200px;
-    background-color: #212121;
-    border: none;
-    padding: 3%;
-    color: #fff;
-}
-
-
-.btns-screen{
-    display: flex;
-    margin-top: 10%;
-    justify-content: space-between;
-}
-
-.btns-screen input{
-    width: 150px;
-    padding: 5%;
-    border-radius: 5px;
-    border: none;
-    background-color: #D70790;
-    color: #fff;
-    
+input{
+    outline: none;
+    border-radius: 5px ;
 }
