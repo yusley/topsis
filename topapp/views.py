@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
+from .forms import *
 #Create your views here.
 
 
@@ -83,8 +84,15 @@ def materiais(request):
 
 @login_required(login_url='/login')
 def cadastroMateriais(request,id=None):
-    return render(request, 'cadastromateriais.html')
 
+    if request.method == 'GET':
+
+        return render(request, 'cadastromateriais.html')
+    
+    else :
+
+        print('POST')
+        return render(request, 'cadastromateriais.html')
 
 @login_required(login_url='/login')
 def fornecedores(request):
@@ -93,7 +101,42 @@ def fornecedores(request):
 
 @login_required(login_url='/login')
 def cadastroFornecedor(request,id=None):
-    return render(request, 'cadastrofornecedor.html')
+
+    if request.method == 'GET':
+
+        return render(request, 'cadastrofornecedor.html')
+    else:
+       
+        form = FornecedorForm(request.POST)
+
+        if form.is_valid():
+
+            object = Fornecedor.objects.filter(nome=form.cleaned_data['nome']).first()
+
+            if object:
+                
+                return render(request, 'cadastrofornecedor.html', {'message':'Fornecedor ja cadastrado!','tipo':'danger'})
+
+            obj = form.save(commit=False)
+            obj.descricao = form.cleaned_data['nome']
+            obj.rua = form.cleaned_data['rua']
+            obj.numero = form.cleaned_data['numero']
+            obj.bairro = form.cleaned_data['bairro']
+            obj.cidade = form.cleaned_data['cidade']
+
+            obj.save()
+
+            return render(request, 'cadastrofornecedor.html', {'message':'Salvo com sucesso!','tipo':'success'})
+        
+        else:
+            print('erro')
+            return render(request, 'cadastrofornecedor.html', {'message':'Erro nos dados!','tipo':'danger'})
+
+        
+
+
+
+
 
 @login_required(login_url='/login')
 def clientes(request):

@@ -27,6 +27,7 @@ class Fornecedor(models.Model):
     rua = models.CharField(max_length=255, null=False)
     bairro = models.CharField(max_length=255, null=False)
     cidade = models.CharField(max_length=255, null=False)
+    numero = models.CharField(max_length=255, null=False)
 
 
 class Produto(models.Model):
