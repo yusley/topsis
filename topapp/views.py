@@ -79,7 +79,9 @@ def home(request):
 
 @login_required(login_url='/login')
 def materiais(request):
-    return render(request, 'materiais.html')
+    materiais = Produto.objects.all()
+
+    return render(request, 'materiais.html',{'materiais':materiais})
 
 
 @login_required(login_url='/login')
@@ -87,16 +89,57 @@ def cadastroMateriais(request,id=None):
 
     if request.method == 'GET':
 
-        return render(request, 'cadastromateriais.html')
-    
+
+        if id != None:
+            material = Produto.objects.filter(id=id).first()
+        else:
+            material = None
+        
+        print(material.unidadeMedida)
+
+        fornecedores = Fornecedor.objects.all()
+
+        return render(request, 'cadastromateriais.html', {'fornecedores':fornecedores,'material':material})
+       
+
     else :
 
+        fornecedores = Fornecedor.objects.all()
         print('POST')
-        return render(request, 'cadastromateriais.html')
+        
+        form = ProdutoForm(request.POST)
+
+
+        if form.is_valid():
+
+            object = Produto.objects.filter(nome=form.cleaned_data['nome']).first()
+
+            if object:
+                
+                return render(request, 'cadastromateriais.html', {'fornecedores': fornecedores,'message':'Produto ja cadastrado!','tipo':'danger'})
+            
+            obj = form.save(commit=False)
+            obj.nome = form.cleaned_data['nome']
+            obj.fornecedor = form.cleaned_data['fk_fornecedor']
+            obj.unidadesMedida = form.cleaned_data['unidadeMedida']
+            obj.medida = form.cleaned_data['medida']
+            
+            obj.save()
+
+            return render(request, 'cadastromateriais.html', {'fornecedores':fornecedores,'message':'Salvo com sucesso!','tipo':'success'})
+
+        else:
+
+            return render(request, 'cadastromateriais.html', {'fornecedores':fornecedores,'message':'Erro nos dados!','tipo':'danger'})
+
+ 
 
 @login_required(login_url='/login')
 def fornecedores(request):
-    return render(request, 'fornecedores.html')
+
+    fornecedores = Fornecedor.objects.all()
+
+    return render(request, 'fornecedores.html', {'fornecedores':fornecedores})
 
 
 @login_required(login_url='/login')
@@ -123,6 +166,7 @@ def cadastroFornecedor(request,id=None):
             obj.numero = form.cleaned_data['numero']
             obj.bairro = form.cleaned_data['bairro']
             obj.cidade = form.cleaned_data['cidade']
+            obj.status = form.cleaned_data['status']
 
             obj.save()
 

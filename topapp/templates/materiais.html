@@ -26,50 +26,27 @@
         <table>
             <tr>
                 <th>Nome</th>
+                <th>UM</th>
                 <th>Medida</th>
                 <th>Fornecedor</th>
                 <th>Ações</th>
             </tr>
-            <tr>
-                <td>Alfreds Futterkiste</td>
-                <td>Maria Anders</td>
-                <td>Germany</td>
-                <td>
-                    <div class="btn-editar">
-                        <input type="submit" value="Editar"/>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>Centro comercial Moctezuma</td>
-                <td>Francisco Chang</td>
-                <td>Mexico</td>
-                <td>
-                    <div class="btn-editar">
-                        <input type="submit" value="Editar"/>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>Centro comercial Moctezuma</td>
-                <td>Francisco Chang</td>
-                <td>Mexico</td>
-                <td>
-                    <div class="btn-editar">
-                        <input type="submit" value="Editar"/>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>Centro comercial Moctezuma</td>
-                <td>Francisco Chang</td>
-                <td>Mexico</td>
-                <td>
-                    <div class="btn-editar">
-                        <input type="submit" value="Editar"/>
-                    </div>
-                </td>
-            </tr>
+            
+            {% if materiais %}
+                {% for material in materiais %}
+                    <tr>
+                        <td>{{material.nome}}</td>
+                        <td>{{material.unidadeMedida}}</td>
+                        <td>{{material.medida}}</td>
+                        <td>{{material.fk_fornecedor.nome}}</td>
+                        <td>
+                            <div class="btn-editar">
+                                <input  type="submit" value="Editar" onclick="window.location.href='/materiais/cadastro/{{material.id}}'">
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
               
               
           </table>

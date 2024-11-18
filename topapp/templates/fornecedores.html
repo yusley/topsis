@@ -28,46 +28,20 @@
                 <th>Nome</th>
                 <th>Ações</th>
             </tr>
-            <tr>
-                <td>Alfreds Futterkiste</td>
-          
+
+            {% if fornecedores%}
+                {% for fornecedor in fornecedores %}
+                    <tr>
+                        <td>{{fornecedor.nome}}</td>
+                        <td>
+                            <div class="btn-editar">
+                                <input type="submit" value="Editar"/>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor%}
+            {% endif %}
             
-                <td>
-                    <div class="btn-editar">
-                        <input type="submit" value="Editar"/>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>Centro comercial Moctezuma</td>
-              
-           
-                <td>
-                    <div class="btn-editar">
-                        <input type="submit" value="Editar"/>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>Centro comercial Moctezuma</td>
-               
-          
-                <td>
-                    <div class="btn-editar">
-                        <input type="submit" value="Editar"/>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>Centro comercial Moctezuma</td>
-               
-           
-                <td>
-                    <div class="btn-editar">
-                        <input type="submit" value="Editar"/>
-                    </div>
-                </td>
-            </tr>
               
               
           </table>

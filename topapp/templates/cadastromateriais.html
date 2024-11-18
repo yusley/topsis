@@ -1,45 +1,84 @@
 {% extends 'partials/base.html' %}
 {% block content%}
-<div class="title">
-    <h1>Materiais</h1>
+
+<div class="header-page">
+
+    <div class="title">
+        <h1>Materiais</h1>
+    </div>
+    
+    {% if tipo == 'danger'%}
+        <div class="message {{tipo}}">
+            <p>{{message}}</p>
+        </div>
+    {% else %}
+        <div class="message {{tipo}}">
+            <p>{{message}}</p>
+        </div>
+    {% endif %}
 </div>
 
 <div class="content-body">
     
-    <div class="title">
-        <h3>
-            Cadastro Material
-        </h3>
-    </div>
+    <form method="post">
+        {% csrf_token %}
+        
+        <div class="title">
+            <h3>
+                Cadastro Material
+            </h3>
+        </div>
 
-    <div class="bigInput">
-        <label for="">Descrição</label>
-        <input type="text">
-    </div>
-    <div class="bigInput">
-        <label for="">Fornecedor</label>
-        <input type="text">
-    </div>
+        <div class="bigInput">
+            <label for="">Descrição</label>
+            <input type="text" name="nome">
+        </div>
+        <div class="bigInput">
+            <label for="">Fornecedor</label>
+            
+            <select class="select2" style="text-transform: uppercase;" name="fk_fornecedor">
+                {% if fornecedores %}
+                    {% for fornecedor in fornecedores %}
+                        <option value="{{ fornecedor.id }}" 
+                            {% if material.fk_fornecedor.id == fornecedor.id %}selected{% endif %}>
+                            {{ fornecedor.nome }}
+                        </option>
+                    {% endfor %}
+                {% endif %}
+            </select>
+        </div>
 
-    <div class="listSmallInput">
-        <div class="smallInput">
-            <label for="">Unidade de Medida</label>
-            <input type="text">
-        </div>
-        <div class="smallInput">
-            <label for="">Medida</label>
-            <input type="text">
-        </div>
-    </div>
+        
 
-    <div class="btns-screen">
-        <div class="btn-crud">
-            <input type="submit" value="CANCELAR" onclick="window.location.href='/materiais'">
+        <div class="listSmallInput">
+            <div class="smallInput">
+                <label for="">Unidade de Medida</label>
+                
+                <select id="unidadesMedida" name="unidadeMedida">
+                    <option value="km" {% if material.unidadeMedida == "km" %}selected{% endif %}>Quilômetro</option>
+                    <option value="hm" {% if material.unidadeMedida == "hm" %}selected{% endif %}>Hectômetro</option>
+                    <option value="dam" {% if material.unidadeMedida == "dam" %}selected{% endif %}>Decâmetro</option>
+                    <option value="m" {% if material.unidadeMedida == "m" %}selected{% endif %}>Metro</option>
+                    <option value="dm" {% if material.unidadeMedida == "dm" %}selected{% endif %}>Decímetro</option>
+                    <option value="cm" {% if material.unidadeMedida == "cm" %}selected{% endif %}>Centímetro</option>
+                    <option value="mm" {% if material.unidadeMedida == "mm" %}selected{% endif %}>Milímetro</option>
+                </select>
+            </div>
+            <div class="smallInput">
+                <label for="">Medida</label>
+                <input type="text" name="medida">
+            </div>
         </div>
-        <div class="btn-crud">
-            <input type="submit" value="SALVAR">
+
+        <div class="btns-screen">
+            <div class="btn-crud">
+                <input value="CANCELAR" onclick="window.location.href='/materiais'">
+            </div>
+            <div class="btn-crud">
+                <input type="submit" value="SALVAR">
+            </div>
         </div>
-    </div>
+    </form>
 
 </div>
 

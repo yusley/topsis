@@ -5,4 +5,11 @@ class FornecedorForm(forms.ModelForm):
 
     class Meta:
         model = Fornecedor
-        fields = ['nome', 'rua', 'numero', 'bairro', 'cidade'] 
+        fields = ['nome', 'rua', 'numero', 'bairro', 'cidade','status']
+
+
+class ProdutoForm(forms.ModelForm):
+
+    class Meta:
+        model = Produto
+        fields = ['nome', 'medida', 'unidadeMedida', 'fk_fornecedor']

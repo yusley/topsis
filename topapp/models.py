@@ -21,18 +21,24 @@ class CustomUser(AbstractUser):
     fk_filial = models.ForeignKey(Filial, on_delete=models.CASCADE, null=True)
 
 
+choices_status = [
+    ('ATIVO','ATIVO'),
+    ('INATIVO','INATIVO')
+]
 
 class Fornecedor(models.Model):
-    nome = models.CharField(max_length=255, null=False, )
+    nome = models.CharField(max_length=255, null=False)
     rua = models.CharField(max_length=255, null=False)
     bairro = models.CharField(max_length=255, null=False)
     cidade = models.CharField(max_length=255, null=False)
     numero = models.CharField(max_length=255, null=False)
+    status = models.CharField(max_length=255,choices=choices_status)
 
 
 class Produto(models.Model):
     nome = models.CharField(max_length=255, null=False)
-    medida = models.CharField(max_length=255, null=False, )
+    medida = models.CharField(max_length=255, null=False)
+    unidadeMedida = models.CharField(max_length=255, null=False)
     fk_fornecedor = models.ForeignKey(Fornecedor, on_delete=models.CASCADE)
 
 
@@ -74,7 +80,7 @@ class Estoque(models.Model):
     fk_filial = models.ForeignKey(Filial,on_delete=models.CASCADE, blank=False)
 
 
-class Estoque(models.Model):
+class Movimentacao(models.Model):
     quantidade = models.CharField(max_length=255, null=False, blank=False)
     tipomovimentacao = models.CharField(max_length=255, null=False, blank=False)
     fk_produto = models.ForeignKey(Produto,on_delete=models.CASCADE, blank=False)
