@@ -79,9 +79,22 @@ def home(request):
 
 @login_required(login_url='/login')
 def materiais(request):
-    materiais = Produto.objects.all()
 
-    return render(request, 'materiais.html',{'materiais':materiais})
+    if request.method == 'GET':
+
+        materiais = Produto.objects.all()
+
+        return render(request, 'materiais.html',{'materiais':materiais})
+    else :
+
+        pesquisa = request.POST.get('pesquisa')
+        
+        if pesquisa:
+            materiais = Produto.objects.filter(nome__icontains=pesquisa)
+        else:
+            materiais = Produto.objects.all()
+
+        return render(request, 'materiais.html',{'materiais':materiais})
 
 
 @login_required(login_url='/login')
@@ -95,7 +108,6 @@ def cadastroMateriais(request,id=None):
         else:
             material = None
         
-        print(material.unidadeMedida)
 
         fornecedores = Fornecedor.objects.all()
 
@@ -105,34 +117,70 @@ def cadastroMateriais(request,id=None):
     else :
 
         fornecedores = Fornecedor.objects.all()
-        print('POST')
         
         form = ProdutoForm(request.POST)
 
 
         if form.is_valid():
 
-            object = Produto.objects.filter(nome=form.cleaned_data['nome']).first()
+            if id != None:
 
-            if object:
+                object = Produto.objects.filter(nome=form.cleaned_data['nome']).first()
+
+
+                material = {
+                    'nome':form.data['nome'],
+                    'fk_fornecedor': form.data['fk_fornecedor'],
+                    'unidadeMedida' : form.data['unidadeMedida'],
+                    'medida': form.data['medida']
+                }
+
+
+                if object:
+                    if object.nome == material['nome'] and object.id != id:
+                        return render(request, 'cadastromateriais.html', {'fornecedores': fornecedores,'message':'Produto ja cadastrado!','tipo':'danger','material':material})
                 
-                return render(request, 'cadastromateriais.html', {'fornecedores': fornecedores,'message':'Produto ja cadastrado!','tipo':'danger'})
-            
-            obj = form.save(commit=False)
-            obj.nome = form.cleaned_data['nome']
-            obj.fornecedor = form.cleaned_data['fk_fornecedor']
-            obj.unidadesMedida = form.cleaned_data['unidadeMedida']
-            obj.medida = form.cleaned_data['medida']
-            
-            obj.save()
+                material = Produto.objects.filter(id=id).first()
 
-            return render(request, 'cadastromateriais.html', {'fornecedores':fornecedores,'message':'Salvo com sucesso!','tipo':'success'})
+                material.nome = form.cleaned_data['nome']
+                material.fk_fornecedor = form.cleaned_data['fk_fornecedor']
+                material.unidadeMedida = form.cleaned_data['unidadeMedida']
+                material.medida = form.cleaned_data['medida']
 
+                material.save()
+
+               
+                return render(request, 'cadastromateriais.html', {'fornecedores':fornecedores,'message':'Salvo com sucesso!','tipo':'success','material':material})
+
+            else:
+
+                object = Produto.objects.filter(nome=form.cleaned_data['nome']).first()
+
+                material = {
+                    'nome':form.data['nome'],
+                    'fk_fornecedor': form.data['fk_fornecedor'],
+                    'unidadeMedida' : form.data['unidadeMedida'],
+                    'medida': form.data['medida']
+                }
+
+                if object:
+                    
+                    return render(request,'cadastromateriais.html', {'fornecedores': fornecedores,'message':'Produto ja cadastrado!','tipo':'danger','material':material})
+                
+                material = form.save(commit=False)
+                material.nome = form.cleaned_data['nome']
+                material.fornecedor = form.cleaned_data['fk_fornecedor']
+                material.unidadesMedida = form.cleaned_data['unidadeMedida']
+                material.medida = form.cleaned_data['medida']
+                
+                material.save()
+
+                return redirect('editcadastromateriais',id=material.id)
         else:
 
             return render(request, 'cadastromateriais.html', {'fornecedores':fornecedores,'message':'Erro nos dados!','tipo':'danger'})
 
- 
+
 
 @login_required(login_url='/login')
 def fornecedores(request):
@@ -147,7 +195,12 @@ def cadastroFornecedor(request,id=None):
 
     if request.method == 'GET':
 
-        return render(request, 'cadastrofornecedor.html')
+        if id != None:
+            fornecedores = Fornecedor.objects.filter(id=id).first()
+        else:
+            fornecedores = None
+
+        return render(request, 'cadastrofornecedor.html', {'fornecedores':fornecedores})
     else:
        
         form = FornecedorForm(request.POST)

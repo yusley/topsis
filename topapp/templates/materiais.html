@@ -8,18 +8,20 @@
 
 <div class="content-body">
 
-    <div class="headers">
-        <div class="btn-novo">
-            <input type="submit" value="Novo Material" onclick="window.location.href='/materiais/cadastro/'"/>
-        </div>
+    <form method="post">{% csrf_token %}
+        <div class="headers">
+            <div class="btn-novo">
+                <input type="submit" value="Novo Material" onclick="window.location.href='/materiais/cadastro/'"/>
+            </div>
 
-        <div class="filters">
-            <input type="text">
-            <button type="submit">
-                <img src="{% static 'img/icons/lupa.png'%}" alt="">
-            </button>
+            <div class="filters">
+                <input type="text" name="pesquisa">
+                <button type="submit">
+                    <img src="{% static 'img/icons/lupa.png'%}" alt="">
+                </button>
+            </div>
         </div>
-    </div>
+    </form>
     
     
     <div class="listagem materiais">

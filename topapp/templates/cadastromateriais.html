@@ -31,7 +31,7 @@
 
         <div class="bigInput">
             <label for="">Descrição</label>
-            <input type="text" name="nome">
+            <input type="text" name="nome" {% if material.nome %}value="{{material.nome}}"{% endif%}>
         </div>
         <div class="bigInput">
             <label for="">Fornecedor</label>
@@ -66,7 +66,7 @@
             </div>
             <div class="smallInput">
                 <label for="">Medida</label>
-                <input type="text" name="medida">
+                <input type="number" name="medida" {% if material.medida %}value="{{material.medida}}"{% endif%}>
             </div>
         </div>
 
